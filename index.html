@@ -8,8 +8,20 @@
     <title>Reporte de Incidentes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <style>    
-    </style>
+        <style>
+            input[type="email"] {
+                width: 100%; /* Ajusta el ancho al 100% del contenedor */
+                padding: 10px; /* Añade un poco de espacio interno */
+                font-size: 16px; /* Aumenta el tamaño de la fuente */
+                margin-bottom: 10px; /* Añade espacio entre los campos */
+            }
+            input[type="phone"] {
+                width: 100%; /* Ajusta el ancho al 100% del contenedor */
+                padding: 10px; /* Añade un poco de espacio interno */
+                font-size: 16px; /* Aumenta el tamaño de la fuente */
+                margin-bottom: 10px; /* Añade espacio entre los campos */
+            }
+        </style>
 </head>
 
 <body>
@@ -19,44 +31,45 @@
                 <h3 class="text-center">Reporte de Incidentes</h3>
                 <hr>
 
-                <form action="https://formsubmit.co/ederander123@gmail.com" method="POST">
+                <form action="https://formspree.io/f/mpwzaydk" method="POST" onsubmit="return validateForm()">
 
                     <div class="mb-3">
                         <label for="area_reportante" class="form-label"><strong>Área Reportante</strong></label>
-                        <input type="text" class="form-control" id="area_reportante" name="area_reportante" maxlength="40" required>
+                        <input type="text" class="form-control" id="area_reportante" name="AREA REPORTANTE:" maxlength="40" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre Reportante</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre_reportante" maxlength="40" required>
+                        <label for="nombre" class="form-label"><strong>Nombre Reportante</strong></label>
+                        <input type="text" class="form-control" id="nombre" name="NOMBRE DEL REPORTANTE" maxlength="40" required>
                     </div>
 
-                    <input type="email" name="email" placeholder="Tu correo electrónico" required>
-
+                    <input type="email" name="CORREO DEL REPORTANTE" placeholder="TU CORREO">
+                    <input type="phone" name="WHATSAPP ENLACE" placeholder="NUMERO WHATSAPP">
+                  
                     <div class="mb-3">
-                        <label for="dni_reportante" class="form-label">DNI Reportante</label>
-                        <input type="text" class="form-control" id="dni_reportante" name="dni_reportante" maxlength="40" required>
+                        <label for="dni_reportante" class="form-label"><strong>DNI Reportante</strong></label>
+                        <input type="text" class="form-control" id="dni_reportante" name="DNI DEL REPORTANTE" maxlength="40" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="area_inc" class="form-label">Área donde ocurrió el incidente:</label>
-                        <textarea class="form-control" id="area_inc" name="area_incidente" rows="4" maxlength="105" oninput="updateCounter('charCount4', 105)"></textarea>
+                        <label for="area_inc" class="form-label"><strong>Área donde ocurrió el incidente:</strong></label>
+                        <textarea class="form-control" id="area_inc" name="AREA DONDE OCURRIO EL INCIDENTE" rows="4" maxlength="105" oninput="updateCounter('charCount4', 105)"></textarea>
                         <div id="charCount4" class="text-end">Caracteres restantes: <strong>105</strong></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="fecha_incidente" class="form-label"><strong>Fecha Incidente</strong></label>
-                        <input type="date" class="form-control" id="fecha_incidente" name="fecha_incidente" required>
+                        <input type="date" class="form-control" id="fecha_incidente" name="FECHA DEL INCIDENTE" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="hora_incidente" class="form-label">Hora Incidente</label>
-                        <input type="time" class="form-control" id="hora_incidente" name="hora_incidente" required>
+                        <label for="hora_incidente" class="form-label"><strong>Hora Incidente</strong></label>
+                        <input type="time" class="form-control" id="hora_incidente" name="HORA DEL INCIDENTE" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="tipo_incidente"><strong>Seleccione el tipo de incidente:</strong></label>
-                        <select id="tipo_incidente" name="tipo_incidente" class="form-select" onchange="mostrarCampoOtro()">
+                        <select id="tipo_incidente" name="TIPO DE INCIDENTE" class="form-select" onchange="mostrarCampoOtro()">
                             <option value="caida_personas">Caída de Personas</option>
                             <option value="caida_objetos">Caída de Objetos</option>
                             <option value="desprendimiento_rocas">Desprendimiento de Rocas</option>
@@ -84,37 +97,52 @@
 
                     <div id="campo_otro" style="display: none;" class="mb-3">
                         <label for="otro_tipo"><strong>Especifique (Sea preciso):</strong></label>
-                        <input type="text" id="otro_tipo" name="otro_tipo" maxlength="30" class="form-control">
+                        <input type="text" id="otro_tipo" name="OTRO TIPO:" maxlength="30" class="form-control">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label"><strong>Causas del Incidente:</strong></label>
-                        <div>
-                            <input type="radio" name="causas_incidente" value="Acto sub estandar"> Acto sub estandar
-                            <input type="radio" name="causas_incidente" value="Condición insegura"> Condición insegura
-                            <input type="radio" name="causas_incidente" value="Falta de entrenamiento"> Falta de entrenamiento
-                            <input type="radio" name="causas_incidente" value="Otros"> Otros
-                        </div>
+                        <ul>
+                            <li>
+                                <input type="radio" name="CAUSAS DEL INCIDENTE" value="Acto sub estandar"> Acto sub estandar
+                            </li>
+                            <li>
+                                <input type="radio" name="CAUSAS DEL INCIDENTE" value="Condición sub"> Condición sub
+                            </li>
+                            <li>
+                                <input type="radio" name="CAUSAS DEL INCIDENTE" value="Incidente estandar"> Incidente estandar
+                            </li>
+                            <li>
+                                <input type="radio" name="CAUSAS DEL INCIDENTE" value="Incidente ambiental"> Incidente ambiental
+                            </li>
+                        </ul>
                     </div>
+                    
 
                     <div class="mb-3">
                         <label class="form-label"><strong>Nivel de Riesgo:</strong></label>
-                        <div>
-                            <input type="radio" name="nivel_riesgo" value="Alto"> Alto
-                            <input type="radio" name="nivel_riesgo" value="Moderado"> Moderado
-                            <input type="radio" name="nivel_riesgo" value="Bajo"> Bajo
-                        </div>
+                        <ul>
+                            <li>
+                                <input type="radio" name="NIVEL DE RIESGO" value="Alto"> Alto
+                            </li>
+                            <li>
+                                <input type="radio" name="NIVEL DE RIESGO" value="Moderado"> Medio
+                            </li>
+                            <li>
+                                <input type="radio" name="NIVEL DE RIESGO" value="Bajo"> Bajo
+                            </li>
+                        </ul>
                     </div>
+                    
 
                     <div class="mb-4">
-                        <label for="descripcion" class="form-label">Descripción:</label>
-                        <textarea class="form-control" id="descripcion" name="descripcion" rows="4" maxlength="600" oninput="updateCounter('charCount1', 600)"></textarea>
+                        <label for="descripcion" class="form-label"><strong>Describe el incidente:</strong></label>
+                        <textarea class="form-control" id="descripcion" name="DESCRIPCION DEL INCIDENTE" rows="4" maxlength="600" oninput="updateCounter('charCount1', 600)"></textarea>
                         <div id="charCount1" class="text-end">Caracteres restantes: <strong>600</strong></div>
                     </div>
 
-                    
                     <button type="submit">Enviar Reporte</button>
-                    <input type="hidden" name="_captcha" value="false">
+                    
                 </form>
 
             </div>
@@ -137,9 +165,23 @@
             const remainingChars = maxChars - textarea.value.length;
             charCount.innerHTML = `Caracteres restantes: <strong>${remainingChars}</strong>`;
         }
-  
+
+        function validateForm() {
+            const selectElement = document.getElementById("tipo_incidente");
+            const otroTipoInput = document.getElementById("otro_tipo");
+
+            // Si se selecciona "otros" pero el campo está vacío, muestra un mensaje
+            if (selectElement.value === "otros" && !otroTipoInput.value.trim()) {
+                alert("Por favor, especifique el tipo de incidente.");
+                otroTipoInput.focus(); // Lleva el foco al campo "otro tipo"
+                return false; // Evita que se envíe el formulario
+            }
+
+            return true; // Permite que el formulario se envíe
+        }
     </script>
     
 </body>
 
 </html>
+
